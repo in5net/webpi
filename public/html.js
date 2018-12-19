@@ -44,7 +44,7 @@ function setHTML() {
         .size(250)
         .topWall()
         .rightWall()
-        .addPos(-15, 65);
+        .addPos(-15, 15);
 
     leader_title = createElement('h2', 'Leaderboard')
         .style('margin', '2px')

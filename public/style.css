@@ -1,0 +1,48 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+canvas {
+    display: block;
+}
+
+input,
+button,
+h1,
+h2,
+h3,
+.leaderboard {
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+input,
+button,
+.leaderboard {
+    background: rgba(0, 105, 153, 0.35);
+    border: 3px solid rgba(0, 255, 242, 0.8);
+    border-radius: 3px;
+}
+
+.leaderboard {
+    display: grid;
+    grid-template: repeat(2, auto) / 1fr;
+}
+
+.board {
+    display: grid;
+    grid-template-rows: repeat(10, 1fr);
+    grid-auto-flow: column;
+}
+
+.place {
+    display: grid;
+    grid-template-columns: 30px auto 50px;
+    height: min-content;
+}
+
+.lead-data {
+    margin: 2px;
+}

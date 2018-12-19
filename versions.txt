@@ -1,0 +1,72 @@
+Developer: Chef Cr33per
+
+Ideas - Noah:
+In a future update plez add 
+-better A.I
+-A shooty power up that leeches moss
+-Popping heads
+-A powerup that sends out drone A.I.s that bring mass to you
+-An easter eggs
+-A sleeker start menu
+-A checkmark at the side of the screen to toggle auto respawn
+-Splitscreen Multiplayer
+-A background for the game
+-Possibly a teams mode (colored blue and orange of course)
+-Large heads mode
+-replace all mass with food that have faces option
+-Upgrades that are not just small %, like maybe unlocking new power ups
+-Diagonal mode using the qweasdzc keys
+-Add particles
+-A mode where you take 3 hits, when you get hit you click somewhere to warp to it
+-A.I.s can't spawn on you anymore. 
+-put Grand Ground Gatling Gun turrets on the outside, as well as cleaner things that clean all of the mess the A.I.s leave
+-when you tap a direction you gain a little speed.
+
+1.0 release of the game
+- the game was basically like Snake
+- eat mass to get longer
+- by yourself
+
+1.1 camera movement
+- you are always at the center of the screen
+- added boundaries
+	* outside: decrease speed
+	* near: increase speed
+
+1.2 bots
+- other players that move randomly
+- players can crash into other players
+- players can powerline against other players
+
+1.3 better graphics
+- things will only display if they are onscreen
+- instead of diplaying all nodes, only lines to turning points 
+are displayed
+
+1.4 better updating
+- changed the updaing nodes system
+- added debug mode
+
+1.5 better collisions
+- faster collision detection
+
+1.6 colorful players
+- name tags
+- colored powerlines
+- dropped mass is the color of the powerline
+
+1.6.1 hold down arrow to gain a slight bit of speed
+
+1.7 Multiplayer
+
+1.7.1 Allows more than 2 players in a game
+
+1.7.2 Deletes players that have disconnected
+
+1.7.3 Organized code and optimization
+
+1.7.4 Added admin and creator codes
+
+1.7.5 Made the game look better
+
+1.7.6 Redesigning of the game

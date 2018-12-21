@@ -1,0 +1,22 @@
+{
+  "name": "winged-guide",
+  "version": "1.0.0",
+  "description": "game made by Noah Appleman",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "game",
+    "socket.io"
+  ],
+  "author": "Noah Appleman (hosted by Izaak Brown)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
+  }
+}

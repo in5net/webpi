@@ -1,0 +1,33 @@
+body {
+    display: grid;
+    margin: 0px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.title {
+    display: grid;
+    justify-items: center;
+    background: rgb(188, 230, 255);
+}
+
+.container {
+    display: grid;
+    grid-template: 120px / repeat(auto-fit, 120px);
+    grid-auto-rows: 120px;
+    grid-gap: 25px;
+    justify-content: center;
+    padding: 25px;
+}
+
+.author {
+    width: min-content;
+}
+
+.link {
+    display: grid;
+    background: rgb(62, 209, 32);
+    border: solid rgba(0, 0, 0, 0.5) 10px;
+    border-radius: 10px;
+    align-items: center;
+    justify-items: center;
+}

@@ -57,8 +57,8 @@ function setHTML() {
     for (let i = 0; i < 10; i++) {
         let place = createDiv().class('place');
         createP((i + 1) + '.').class('lead-data').parent(place); // Place number
-        createP('---').class('lead-data').parent(place); // Player name
-        createP('-').class('lead-data').parent(place); // Player score
+        createP('').class('lead-data').parent(place); // Player name
+        createP('').class('lead-data').parent(place); // Player score
 
         place.parent(board);
     }

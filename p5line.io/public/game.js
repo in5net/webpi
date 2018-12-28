@@ -73,16 +73,17 @@ function run() {
     background(backColor);
 
     if (showStartScreen) {
-        ellipseMode(CORNER);
         noStroke();
         let i = 0;
-        for (let x = -15; x < width + 15; x += 60) {
-            for (let y = -15; y < height + 15; y += 60) {
-                fill(colors[i++ % 3]);
+        let j = 0;
+        for (let x = -25; x < width + 25; x += 60) {
+            for (let y = -25; y < height + 25; y += 60) {
+                fill(colors[j++ % 3]);
                 ellipse(x, y, 50);
             }
+            i++;
+            j = i;
         }
-        ellipseMode(CENTER);
 
         length.html('Length: ' + player.length);
     } else {
@@ -97,10 +98,9 @@ function run() {
             for (let x = 30; x <= edge.w - 30; x += 60) {
                 for (let y = 30; y <= edge.h - 30; y += 60) {
                     if (player.inFOV({ x: x, y: y })) {
-                        fill(colors[j % 3]);
+                        fill(colors[j++ % 3]);
                         ellipse(x, y, 50);
                     }
-                    j++;
                 }
                 i++;
                 j = i;

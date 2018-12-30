@@ -1,0 +1,20 @@
+{
+  "name": "hub",
+  "version": "1.0.0",
+  "description": "links to servers",
+  "main": "index.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "keywords": [
+    "socket.io",
+    "express",
+    "node"
+  ],
+  "author": "Izaak Brown",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "socket.io": "^2.2.0"
+  }
+}

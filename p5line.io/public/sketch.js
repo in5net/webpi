@@ -87,11 +87,6 @@ function setup() {
     }
 }
 
-function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
-    resetHTML();
-}
-
 function draw() {
     run();
 }

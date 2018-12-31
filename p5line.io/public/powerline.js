@@ -44,6 +44,7 @@ class Powerline {
         this.vel = 2;
         this.acc = 0;
         this.dir = up;
+        this.dirString = '';
 
         this.color = color(random(255), random(255), random(255));
         while (this.color.levels.sum() < 300) {
@@ -72,30 +73,94 @@ class Powerline {
     turn() {
         if (this.isPlayer) {
             if (keyIsPressed) {
-                switch (keyCode) {
-                    case UP_ARROW:
+                if (this.isAdmin) {
+                    if (keyIsDown(UP_ARROW)) {
                         if (this.dir !== up && this.dir !== down) {
                             this.dir = up;
                             this.turnPoints.push(this.pos.copy());
+                            this.dirString += 'up';
                         }
-                        break;
-                    case DOWN_ARROW:
+                    } else if (keyIsDown(DOWN_ARROW)) {
                         if (this.dir !== down && this.dir !== up) {
                             this.dir = down;
                             this.turnPoints.push(this.pos.copy());
+                            this.dirString += 'down';
                         }
-                        break;
-                    case LEFT_ARROW:
+                    }
+
+                    if (keyIsDown(LEFT_ARROW)) {
                         if (this.dir !== left && this.dir !== right) {
                             this.dir = left;
                             this.turnPoints.push(this.pos.copy());
+                            this.dirString += ' left';
                         }
-                        break;
-                    case RIGHT_ARROW:
+                    } else if (keyIsDown(RIGHT_ARROW)) {
                         if (this.dir !== right && this.dir !== left) {
                             this.dir = right;
                             this.turnPoints.push(this.pos.copy());
+                            this.dirString += ' right';
                         }
+                    }
+
+                    print(this.dirString);
+
+                    switch (this.dirString) {
+                        case 'up left':
+                            if (this.dirString !== 'down right') {
+                                this.dir = up.copy();
+                                this.dir.rotate(-PI / 4);
+                                this.turnPoints.push(this.pos.copy());
+                            }
+                            break;
+                        case 'up right':
+                            if (this.dirString !== 'down left') {
+                                this.dir = up.copy();
+                                this.dir.rotate(PI / 4);
+                                this.turnPoints.push(this.pos.copy());
+                            }
+                            break;
+                        case 'down left':
+                            if (this.dirString !== 'up right') {
+                                this.dir = down.copy();
+                                this.dir.rotate(PI / 4);
+                                this.turnPoints.push(this.pos.copy());
+                            }
+                            break;
+                        case 'down right':
+                            if (this.dirString !== 'up left') {
+                                this.dir = down.copy();
+                                this.dir.rotate(-PI / 4);
+                                this.turnPoints.push(this.pos.copy());
+                            }
+                    }
+
+                    this.dirString = '';
+                } else {
+                    switch (keyCode) {
+                        case UP_ARROW:
+                            if (this.dir !== up && this.dir !== down) {
+                                this.dir = up;
+                                this.turnPoints.push(this.pos.copy());
+                            }
+                            break;
+                        case DOWN_ARROW:
+                            if (this.dir !== down && this.dir !== up) {
+                                this.dir = down;
+                                this.turnPoints.push(this.pos.copy());
+                            }
+                            break;
+                        case LEFT_ARROW:
+                            if (this.dir !== left && this.dir !== right) {
+                                this.dir = left;
+                                this.turnPoints.push(this.pos.copy());
+                            }
+                            break;
+                        case RIGHT_ARROW:
+                            if (this.dir !== right && this.dir !== left) {
+                                this.dir = right;
+                                this.turnPoints.push(this.pos.copy());
+                            }
+                    }
                 }
             }
         } else {
@@ -314,6 +379,14 @@ class Powerline {
             for (let p of this.points) {
                 point(p.x, p.y);
             }
+
+            push();
+            translate(this.pos.x, this.pos.y);
+
+            stroke(0);
+            line(0, 0, this.dir.x * 20, this.dir.y * 20);
+
+            pop();
         }
 
         fill(255, a);

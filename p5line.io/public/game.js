@@ -92,15 +92,15 @@ function run() {
 
         if (highDetail) {
             noStroke();
-            let pos = p5.Vector.sub(player.pos, createVector(width / 2, height / 2));
             let i = 0;
             let j = 0;
             for (let x = 30; x <= edge.w - 30; x += 60) {
                 for (let y = 30; y <= edge.h - 30; y += 60) {
                     if (player.inFOV({ x: x, y: y })) {
-                        fill(colors[j++ % 3]);
+                        fill(colors[j % 3]);
                         ellipse(x, y, 50);
                     }
+                    j++;
                 }
                 i++;
                 j = i;

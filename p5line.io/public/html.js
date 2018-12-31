@@ -1,23 +1,23 @@
+p5.Element.prototype.addPos = function(x = 0, y = 0) {
+    let pos = this.position();
+    this.position(pos.x + x, pos.y + y);
+    return this;
+};
+
+p5.Element.prototype.topWall = function() {
+    let pos = this.position();
+    this.position(pos.x, 0);
+    return this;
+};
+
+p5.Element.prototype.rightWall = function() {
+    let size = this.size();
+    let pos = this.position();
+    this.position(width - size.width, pos.y);
+    return this;
+};
+
 function setHTML() {
-    p5.Element.prototype.addPos = function(x = 0, y = 0) {
-        let pos = this.position();
-        this.position(pos.x + x, pos.y + y);
-        return this;
-    };
-
-    p5.Element.prototype.topWall = function() {
-        let pos = this.position();
-        this.position(pos.x, 0);
-        return this;
-    };
-
-    p5.Element.prototype.rightWall = function() {
-        let size = this.size();
-        let pos = this.position();
-        this.position(width - size.width, pos.y);
-        return this;
-    };
-
     game_title = createElement('h1', 'p5line.io')
         .style('font-size', '100px')
         .position(0, 0)
@@ -127,4 +127,103 @@ function setHTML() {
                 socket.emit('admin', 'map', newEdge.w - 60);
             })
     };
+}
+
+function resetHTML() {
+    game_title
+        .style('font-size', '100px')
+        .position(0, 0)
+        .center('horizontal');
+
+    length
+        .style('font-size', '36px')
+        .center()
+        .addPos(0, -120);
+
+    name_input
+        .size(200, 30)
+        .center()
+        .attribute('placeholder', 'Player name');
+
+    code_input
+        .size(100, 30)
+        .center()
+        .addPos(160)
+        .attribute('placeholder', 'Code');
+
+    leaderboard
+        .class('leaderboard')
+        .size(250)
+        .topWall()
+        .rightWall()
+        .addPos(-15, 15);
+
+    leader_title
+        .style('margin', '2px')
+        .parent(leaderboard);
+
+    board
+        .class('board')
+        .parent(leaderboard);
+
+    buttons.play
+        .size(200, 30)
+        .center()
+        .addPos(0, 50)
+        .mousePressed(() => {
+            let name = name_input.value() || 'player' + round(random(0, 1000));
+            let code = code_input.value();
+
+            player.name = name;
+            socket.emit('checkCode', code);
+
+            showStartScreen = false;
+            player.reset(random(edge.w), random(edge.h), 10);
+        });
+
+    buttons.detail
+        .size(200, 30)
+        .center()
+        .addPos(0, 100)
+        .mousePressed(() => {
+            if (highDetail) {
+                buttons.detail.html('Low detail');
+                highDetail = false;
+            } else {
+                buttons.detail.html('High detail');
+                highDetail = true;
+            }
+        });
+
+    buttons.debug
+        .size(200, 30)
+        .center()
+        .addPos(0, 150)
+        .mousePressed(() => {
+            if (debug) {
+                buttons.debug.html('Debug: off');
+                debug = false;
+            } else {
+                buttons.debug.html('Debug: on');
+                debug = true;
+            }
+        });
+
+    adminBtns.moreMap
+        .size(70, 30)
+        .center()
+        .rightWall()
+        .addPos(0, -15)
+        .mousePressed(() => {
+            socket.emit('admin', 'map', newEdge.w + 60);
+        });
+
+    adminBtns.lessMap
+        .size(70, 30)
+        .center()
+        .rightWall()
+        .addPos(0, 15)
+        .mousePressed(() => {
+            socket.emit('admin', 'map', newEdge.w - 60);
+        });
 }

@@ -1,1 +1,1 @@
-**This is a game created by Izaak Brown based off of powerline.io**
+**This is a bunch of code for chefcgames.ga to run on a server**

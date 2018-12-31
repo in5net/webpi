@@ -22,14 +22,18 @@
             <a href="http://71.66.250.75:3498">Chat</a>
         </div>
         <div class="link">
-            <a href="http://71.66.250.75:3499">Draw!</a>
+            <a href="../../draw/index.html">Draw!</a>
         </div>
         <div class="link">
-            <a href="http://71.66.250.75:3495">Winged Guide</a>
+            <a href="../../Noah - Winged Guide/index.html">Winged Guide</a>
             <p class="author">by Noah Appleman</p>
         </div>
     </div>
 </body>
-<script src="app.js"></script>
+<script>
+    const ip = '71.66.250.75';
+    const port = 3496;
+    io.connect(ip + ':' + port);
+</script>
 
 </html>

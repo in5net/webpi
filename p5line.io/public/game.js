@@ -35,8 +35,7 @@ function send() {
     });
     p.turnPoints = turnPoints;
 
-    let c = player.color.levels;
-    p.color = { r: c[0], g: c[1], b: c[2] };
+    p.color = player.color.levels;
 
     socket.emit('player', p);
 }
@@ -60,8 +59,7 @@ function receive(data) {
     players[idx].nodes = data.nodes.map(node => createVector(node.x, node.y));
     players[idx].turnPoints = data.turnPoints.map(tp => createVector(tp.x, tp.y));
 
-    let c = data.color;
-    players[idx].color = color(c.r, c.g, c.b);
+    players[idx].color = color.apply(data.color, data.color);
 }
 
 function delPlayer(id) {

@@ -70,3 +70,5 @@ are displayed
 1.7.5 Made the game look better
 
 1.7.6 Redesigning of the game
+
+1.7.7 Bug fix and creator cloak ability

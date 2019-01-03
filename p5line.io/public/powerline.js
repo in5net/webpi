@@ -44,7 +44,7 @@ class Powerline {
         this.vel = 2;
         this.acc = 0;
         this.dir = up;
-        this.dirString = '';
+        this.cloak = 100;
 
         this.color = color(random(255), random(255), random(255));
         while (this.color.levels.sum() < 300) {
@@ -71,122 +71,56 @@ class Powerline {
     }
 
     turn() {
+        let dir = createVector();
+
         if (this.isPlayer) {
             if (keyIsPressed) {
                 if (this.isAdmin) {
-                    if (keyIsDown(UP_ARROW)) {
-                        if (this.dir !== up && this.dir !== down) {
-                            this.dir = up;
-                            this.turnPoints.push(this.pos.copy());
-                            this.dirString += 'up';
-                        }
-                    } else if (keyIsDown(DOWN_ARROW)) {
-                        if (this.dir !== down && this.dir !== up) {
-                            this.dir = down;
-                            this.turnPoints.push(this.pos.copy());
-                            this.dirString += 'down';
-                        }
-                    }
+                    if (keyIsDown(UP_ARROW))
+                        dir.add(up);
+                    else if (keyIsDown(DOWN_ARROW))
+                        dir.add(down);
+                    if (keyIsDown(LEFT_ARROW))
+                        dir.add(left);
+                    else if (keyIsDown(RIGHT_ARROW))
+                        dir.add(right);
 
-                    if (keyIsDown(LEFT_ARROW)) {
-                        if (this.dir !== left && this.dir !== right) {
-                            this.dir = left;
-                            this.turnPoints.push(this.pos.copy());
-                            this.dirString += ' left';
-                        }
-                    } else if (keyIsDown(RIGHT_ARROW)) {
-                        if (this.dir !== right && this.dir !== left) {
-                            this.dir = right;
-                            this.turnPoints.push(this.pos.copy());
-                            this.dirString += ' right';
-                        }
-                    }
-
-                    print(this.dirString);
-
-                    switch (this.dirString) {
-                        case 'up left':
-                            if (this.dirString !== 'down right') {
-                                this.dir = up.copy();
-                                this.dir.rotate(-PI / 4);
-                                this.turnPoints.push(this.pos.copy());
-                            }
-                            break;
-                        case 'up right':
-                            if (this.dirString !== 'down left') {
-                                this.dir = up.copy();
-                                this.dir.rotate(PI / 4);
-                                this.turnPoints.push(this.pos.copy());
-                            }
-                            break;
-                        case 'down left':
-                            if (this.dirString !== 'up right') {
-                                this.dir = down.copy();
-                                this.dir.rotate(PI / 4);
-                                this.turnPoints.push(this.pos.copy());
-                            }
-                            break;
-                        case 'down right':
-                            if (this.dirString !== 'up left') {
-                                this.dir = down.copy();
-                                this.dir.rotate(-PI / 4);
-                                this.turnPoints.push(this.pos.copy());
-                            }
-                    }
-
-                    this.dirString = '';
+                    dir.normalize();
                 } else {
-                    switch (keyCode) {
-                        case UP_ARROW:
-                            if (this.dir !== up && this.dir !== down) {
-                                this.dir = up;
-                                this.turnPoints.push(this.pos.copy());
-                            }
-                            break;
-                        case DOWN_ARROW:
-                            if (this.dir !== down && this.dir !== up) {
-                                this.dir = down;
-                                this.turnPoints.push(this.pos.copy());
-                            }
-                            break;
-                        case LEFT_ARROW:
-                            if (this.dir !== left && this.dir !== right) {
-                                this.dir = left;
-                                this.turnPoints.push(this.pos.copy());
-                            }
-                            break;
-                        case RIGHT_ARROW:
-                            if (this.dir !== right && this.dir !== left) {
-                                this.dir = right;
-                                this.turnPoints.push(this.pos.copy());
-                            }
-                    }
+                    if (keyIsDown(UP_ARROW))
+                        dir = up;
+                    else if (keyIsDown(DOWN_ARROW))
+                        dir = down;
+                    else if (keyIsDown(LEFT_ARROW))
+                        dir = left;
+                    else if (keyIsDown(RIGHT_ARROW))
+                        dir = right;
                 }
             }
         } else {
-            let ran = floor(random(4));
             if (this.turnFrame > 40) {
-                let prev_dir = this.dir;
-                switch (ran) {
+                switch (floor(random(4))) {
                     case 0:
-                        this.dir = up;
+                        dir = up;
                         break;
                     case 1:
-                        this.dir = down;
+                        dir = down;
                         break;
                     case 2:
-                        this.dir = left;
+                        dir = left;
                         break;
                     case 3:
-                        this.dir = right;
+                        dir = right;
                 }
 
-                if (this.dir !== prev_dir) {
-                    this.turnPoints.push(this.pos.copy());
-                }
                 this.turnFrame = 0;
             }
             this.turnFrame++;
+        }
+
+        if (!this.dir.same(dir) && !this.dir.same(p5.Vector.mult(dir, -1)) && !dir.same(createVector())) {
+            this.turnPoints.push(this.pos.copy());
+            this.dir = dir;
         }
     }
 
@@ -306,9 +240,7 @@ class Powerline {
             this.vel = constrain(this.vel, 2, 8);
         }
 
-        if (this.turnPoints[0] &&
-            this.turnPoints[0].x === this.nodes[-1].x &&
-            this.turnPoints[0].y === this.nodes[-1].y) {
+        if (this.turnPoints[0] && this.turnPoints[0].same(this.nodes[-1])) {
             this.turnPoints.splice(0, 1);
         }
 
@@ -320,11 +252,26 @@ class Powerline {
         this.acc = 0;
     }
 
+    abilities() {
+        if (this.isCreator) {
+            if (this.cloaking) {
+                this.cloak -= 100 / (60 * 5);
+            } else {
+                this.cloak += 100 / (60 * 7.5);
+            }
+
+            this.cloak = constrain(this.cloak, 0, 100);
+            if (this.cloak === 0)
+                this.cloaking = false;
+        }
+    }
+
     update() {
         this.time();
 
         if (this.alive) {
             this.crash();
+            this.abilities();
             this.speed();
             this.turn();
             this.vectors();
@@ -334,14 +281,20 @@ class Powerline {
     display() {
         let inPlayerFOV = this.points.some(pt => this === player || player.inFOV(pt));
 
-        if ((!inPlayerFOV && !this.isPlayer) || !this.alive) return;
+        if (!inPlayerFOV) return;
 
-        let a = map(this.sinceDead, 0, 15, 255, 0);
+        let a = this.color.levels[3];
+        let newa = this.alive ? 255 : 0;
+
+        if (this.isCreator && this.cloaking) newa = 1.5;
+
+        a = lerp(a, newa, 0.3);
+        this.color.levels[3] = a;
 
         if (this.isAdmin) {
             noFill();
             strokeWeight(8);
-            colorMode(HSB, 360, 255, 255);
+            colorMode(HSB, 360, 255, 255, 255);
 
             let h = 0;
 
@@ -359,11 +312,7 @@ class Powerline {
             colorMode(RGB);
         } else {
             noFill();
-
-            let c = this.color.levels;
-            c[3] = a;
-            stroke.apply(null, c);
-
+            stroke(this.color);
             strokeWeight(8);
             beginShape();
             for (let p of this.points) {

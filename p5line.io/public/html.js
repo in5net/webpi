@@ -127,4 +127,15 @@ function setHTML() {
                 socket.emit('admin', 'map', newEdge.w - 60);
             })
     };
+
+    creatorBtns = {
+        cloak: createButton('Cloak')
+            .size(70, 30)
+            .center()
+            .rightWall()
+            .addPos(0, 60)
+            .mousePressed(() => {
+                player.cloaking = true;
+            })
+    };
 }

@@ -14,6 +14,10 @@ function showHTML() {
         for (let b in adminBtns) {
             adminBtns[b].hide();
         }
+
+        for (let b in creatorBtns) {
+            creatorBtns[b].hide();
+        }
     } else {
         game_title.hide();
         length.hide();
@@ -29,6 +33,12 @@ function showHTML() {
         if (player.isAdmin) {
             for (let b in adminBtns) {
                 adminBtns[b].show();
+            }
+        }
+
+        if (player.isCreator) {
+            for (let b in creatorBtns) {
+                creatorBtns[b].show();
             }
         }
     }
@@ -74,10 +84,19 @@ function data() {
 
     if (debug) {
         text('Mass: ' + masses.length, 10 + 80 * 0, 30);
-        text('Vel: ' + round(player.vel * 10) / 10, 10 + 80 * 1, 30);
+        text('Vel: ' + player.vel.toFixed(1), 10 + 80 * 1, 30);
         text('Turns: ' + player.turnPoints.length, 10 + 80 * 2, 30);
-        text('Fps: ' + round(frameRate() * 10) / 10, 10 + 80 * 3, 30);
+        text('Fps: ' + frameRate().toFixed(1), 10 + 80 * 3, 30);
         text('Players: ' + (players.length + 1), 10 + 80 * 4, 30);
+    }
+
+    if (player.isCreator) {
+        let cloak = creatorBtns.cloak;
+        let mapw = map(player.cloak, 0, 100, 0, cloak.width);
+
+        noStroke();
+        fill(0, 76, 198);
+        rect(cloak.x, cloak.y - 5, mapw, 5);
     }
 
     if (frameCount % 60 * 3 === 0) {

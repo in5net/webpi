@@ -77,3 +77,7 @@ function linesIntersect(a, b, c, d, p, q, r, s) {
         return (0 < lambda && lambda < 1) && (0 < gamma && gamma < 1);
     }
 }
+
+p5.Vector.prototype.same = function(v) {
+    return this.x === v.x && this.y === v.y && this.z === v.z;
+};

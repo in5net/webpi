@@ -45,6 +45,7 @@ let highDetail = true;
 let debug = false;
 let buttons;
 let adminBtns;
+let creatorBtns;
 
 // HTML elements
 let name_input, code_input, length, game_title, leaderboard;

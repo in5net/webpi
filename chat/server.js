@@ -11,10 +11,12 @@ const socket = require('socket.io');
 const io = socket(server);
 
 let online = 0;
+let total = 0;
 
 io.on('connect', socket => {
     console.log('new connection: ' + socket.id);
     console.log('online: ' + ++online);
+    console.log('total: ' + ++total);
 
     socket.on('disconnect', () => {
         socket.broadcast.emit('delUser', socket.id);

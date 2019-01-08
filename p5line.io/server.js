@@ -2,7 +2,6 @@ const express = require('express');
 
 const app = express();
 const server = app.listen(3497);
-// const server = app.listen(3000);
 
 app.use(express.static('public'));
 
@@ -14,10 +13,12 @@ const io = socket(server);
 const adminCode = 'robloxglitch';
 const creatorCode = 'sockjet';
 let online = 0;
+let total = 0;
 
 io.on('connect', socket => {
     console.log('new connection: ' + socket.id);
     console.log('online: ' + ++online);
+    console.log('total: ' + ++total);
 
     socket.on('disconnect', () => {
         console.log('disconnection: ' + socket.id);

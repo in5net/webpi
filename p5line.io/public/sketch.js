@@ -1,7 +1,5 @@
 const ip = '71.66.250.75';
 const port = 3497;
-// const ip = 'http://localhost';
-// const port = 3000;
 
 // Connection
 let socket;
@@ -48,7 +46,7 @@ let adminBtns;
 let creatorBtns;
 
 // HTML elements
-let name_input, code_input, length, game_title, leaderboard;
+let basedP, basedA, name_input, code_input, length, game_title, leaderboard;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);

@@ -18,6 +18,11 @@ p5.Element.prototype.rightWall = function() {
 };
 
 function setHTML() {
+    basedP = createP('Based off of')
+        .position(15, 20);
+    basedA = createA('http://powerline.io/', 'powerline.io')
+        .position(110, 15);
+
     game_title = createElement('h1', 'p5line.io')
         .style('font-size', '100px')
         .position(0, 0)

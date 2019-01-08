@@ -2,10 +2,23 @@ html,
 body {
     margin: 0;
     padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 canvas {
     display: block;
+}
+
+p {
+    font-size: 16px;
+    margin: 0px;
+}
+
+a {
+    background: white;
+    box-shadow: 0px 0px 10px white;
+    padding: 3px;
+    text-decoration: none;
 }
 
 h1,
@@ -14,6 +27,7 @@ h3 {
     text-shadow: 0px 0px 15px white;
 }
 
+p,
 input,
 button,
 h1,
@@ -21,7 +35,6 @@ h2,
 h3,
 .leaderboard {
     color: white;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 input,

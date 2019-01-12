@@ -1,3 +1,4 @@
+// Code was apapted from Daniel Shiffman, Youtube: https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1_aw
 let database;
 let drawing = [];
 let currentPath = [];

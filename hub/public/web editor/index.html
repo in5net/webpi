@@ -2,27 +2,29 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8">
     <title>Web Editor</title>
 
-    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.sound.min.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
 </head>
 
 <body>
-    <button id="play">Play</button>
-    <button id="stop">Stop</button>
-    <button id="save">Save</button>
-    <button id="load">Load</button>
-    <input id="password" type="text" placeholder="Password">
-    <div id="container">
+    <header>
+        <div id="buttons">
+            <button id="play"><i class="fas fa-play-circle"></i></button>
+            <button id="stop"><i class="fas fa-stop-circle"></i></button>
+            <button id="save"><i class="fas fa-cloud-upload-alt"></i></button>
+            <button id="load"><i class="fas fa-cloud-download-alt"></i></button>
+        </div>
+        <input id="password" type="text" placeholder="Password">
+    </header>
+    <main>
         <input id="editor" type="text" value="<p>Welcome to a webpage!</p>">
         <iframe id="webpage"></iframe>
-    </div>
+    </main>
 </body>
 <script src="editor.js"></script>
 

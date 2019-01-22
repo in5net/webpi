@@ -17,6 +17,17 @@ let loadBtn = document.getElementById('load');
 let passwordBox = document.getElementById('password');
 
 let editor = document.getElementById('editor');
+editor.value = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My webpage</title>
+</head>
+<body>
+    <h1>Welcome to my webpage!</h1>
+</body>
+</html>`;
+
 let webpage = document.getElementById('webpage');
 
 playBtn.onclick = function() {

@@ -13,18 +13,22 @@
 
 <body>
     <header>
+        <h1 id="title">Malachite Web Editor</h1>
+        <input id="password" type="text" placeholder="Password">
         <div id="buttons">
             <button id="play"><i class="fas fa-play-circle"></i></button>
             <button id="stop"><i class="fas fa-stop-circle"></i></button>
             <button id="save"><i class="fas fa-cloud-upload-alt"></i></button>
             <button id="load"><i class="fas fa-cloud-download-alt"></i></button>
         </div>
-        <input id="password" type="text" placeholder="Password">
     </header>
     <main>
-        <input id="editor" type="text" value="<p>Welcome to a webpage!</p>">
+        <textarea id="editor" type="text"></textarea>
         <iframe id="webpage"></iframe>
     </main>
+    <footer>
+        <h2>Created by Izaak Brown</h2>
+    </footer>
 </body>
 <script src="editor.js"></script>
 

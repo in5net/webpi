@@ -15,28 +15,59 @@
         <h4>If you would like to put your own website on here then you can pay me 5&cent;/day</h4>
     </div>
     <div class="container">
-        <div class="link">
+        <div>
             <a href="http://71.66.250.75:3497">p5line.io</a>
         </div>
-        <div class="link">
+        <div>
             <a href="http://71.66.250.75:3498">Chat</a>
         </div>
-        <div class="link">
+        <div>
             <a href="draw/index.html">Draw!</a>
         </div>
-        <div class="link">
+        <div>
             <a href="web editor/index.html">Web Editor</a>
         </div>
-        <div class="link">
+        <div>
             <a href="Noah - Winged Guide/index.html">Winged Guide</a>
             <p class="author">by Noah A</p>
         </div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
 </body>
 <script>
     const ip = '71.66.250.75';
     const port = 3496;
     io.connect(ip + ':' + port);
+
+    let container = document.getElementsByClassName('container')[0];
+    let children = container.children;
+    for (let i = 0; i < children.length; i++) {
+        children[i].style.animation = 'link 2s ease ' + i / 20 + 's 1 forwards';
+    }
 </script>
 
 </html>

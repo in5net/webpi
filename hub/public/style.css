@@ -1,6 +1,7 @@
 body {
     display: grid;
     margin: 0px;
+    overflow: hidden;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: #16000F;
     color: #ADA8B6;
@@ -16,28 +17,37 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, 120px);
     grid-auto-rows: 120px;
-    grid-gap: 25px;
-    padding: 25px;
+    grid-gap: 15px;
+    padding: 35px;
     justify-content: center;
     color: #000004;
 }
 
-.author {
-    width: max-content;
-}
-
-.link {
+.container div {
     display: grid;
     align-items: center;
     justify-items: center;
-    width: 100px;
-    height: 100px;
+    margin-top: 100vh;
+    width: calc(100% - 10px*2);
+    height: calc(100% - 10px*2);
     border: solid rgb(145, 125, 134) 10px;
-    border-radius: 10px;
+    border-radius: 30%;
     background-color: rgb(189, 167, 177);
-    transition: transform 0.25s;
+    opacity: 0.8;
+    transition: all 0.25s;
 }
 
-.link:hover {
+@keyframes link {
+    to {
+        margin-top: 0vh;
+    }
+}
+
+.container div:hover {
     transform: scale(1.1);
+    opacity: 1;
+}
+
+.author {
+    width: max-content;
 }

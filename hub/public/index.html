@@ -5,13 +5,12 @@
     <meta charset="utf-8" />
     <title>Hub server</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 </head>
 
 <body>
     <div class="title">
-        <h1>Welcome to Izaak's hub!</h1>
-        <h3>Server hours: 7am-3pm, Mon-Fri</h3>
+        <h1>Welcome to Izaak's website!</h1>
+        <h3>Server (Raspberry pi) hours: Every day 24/7 unless being updated</h3>
         <h4>If you would like to put your own website on here then you can pay me 5&cent;/day</h4>
     </div>
     <div class="container">
@@ -22,49 +21,30 @@
             <a href="http://71.66.250.75:3498">Chat</a>
         </div>
         <div>
-            <a href="draw/index.html">Draw!</a>
+            <a href="draw">Draw!</a>
         </div>
         <div>
-            <a href="web editor/index.html">Web Editor</a>
+            <a href="web editor">Web Editor</a>
         </div>
         <div>
-            <a href="Noah - Winged Guide/index.html">Winged Guide</a>
+            <a href="flocking">Flocking Simulation</a>
+        </div>
+        <div>
+            <a href="Noah - Winged Guide">Winged Guide</a>
             <p class="author">by Noah A</p>
         </div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
     </div>
 </body>
 <script>
-    const ip = '71.66.250.75';
-    const port = 3496;
-    io.connect(ip + ':' + port);
-
     let container = document.getElementsByClassName('container')[0];
     let children = container.children;
+
+    let num = 50 - children.length;
+    for (let i = 0; i < num; i++) {
+        let div = document.createElement('div');
+        container.appendChild(div);
+    }
+
     for (let i = 0; i < children.length; i++) {
         children[i].style.animation = 'link 2s ease ' + i / 20 + 's 1 forwards';
     }

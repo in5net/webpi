@@ -7,6 +7,10 @@ body {
     color: #ADA8B6;
 }
 
+a {
+    text-decoration: none;
+}
+
 .title {
     display: grid;
     justify-items: center;
@@ -46,6 +50,10 @@ body {
 .container div:hover {
     transform: scale(1.1);
     opacity: 1;
+}
+
+.container div * {
+    text-align: center;
 }
 
 .author {

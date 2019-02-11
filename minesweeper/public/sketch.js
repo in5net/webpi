@@ -6,7 +6,7 @@ const users = [];
 const ids = () => users.map(u => u.id);
 
 socket.on('delUser', id => {
-    let idx = ids().findIndex(id);
+    let idx = ids().indexOf(id);
     users.splice(idx, 1);
 });
 
@@ -14,7 +14,7 @@ socket.on('mouse', user => {
     if (!ids().includes(user.id))
         users.push(user);
 
-    let u = users[ids().findIndex(user.id)];
+    let u = users[ids().indexOf(user.id)];
     u.x = user.x;
     u.y = user.y;
     let c = user.color;
@@ -115,9 +115,12 @@ function draw() {
         }
     });
 
+    stroke(0);
     users.forEach(u => {
-        stroke(0);
         fill(u.color);
         ellipse(u.x, u.y, 15);
     });
+
+    fill(col);
+    ellipse(mouseX, mouseY, 15);
 }

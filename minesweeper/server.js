@@ -24,10 +24,6 @@ io.on('connect', socket => {
         socket.broadcast.emit('delUser', socket.id);
     });
 
-    socket.on('updateGrid', grid => {
-        socket.broadcast.emit('updateGrid', grid);
-    });
-
     socket.on('mouse', user => {
         user.id = socket.id;
         socket.broadcast.emit('mouse', user);

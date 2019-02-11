@@ -17,7 +17,7 @@ socket.on('mouse', user => {
     let u = users(ids().findIndex(user.id));
     u.x = user.x;
     u.y = user.y;
-    u.color = user.color;
+    u.color = color(user.r, user.g, user.b);
 });
 
 let col;
@@ -107,7 +107,11 @@ function draw() {
     socket.emit('mouse', {
         x: mouseX,
         y: mouseY,
-        color: col
+        color: {
+            r: red(col),
+            g: green(col),
+            b: blue(col)
+        }
     });
 
     users.forEach(u => {

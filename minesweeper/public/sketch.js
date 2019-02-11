@@ -17,7 +17,8 @@ socket.on('mouse', user => {
     let u = users(ids().findIndex(user.id));
     u.x = user.x;
     u.y = user.y;
-    u.color = color(user.r, user.g, user.b);
+    let ucolor = user.color;
+    u.color = color(ucolor.r, ucolor.g, ucolor.b);
 });
 
 let col;

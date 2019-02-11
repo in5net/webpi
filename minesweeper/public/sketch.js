@@ -5,8 +5,8 @@ const socket = io.connect(ip + ':' + port);
 const users = [];
 const ids = () => users.map(u => u.id);
 
-socket.on('delUser', user => {
-    ids().findIndex(user.id);
+socket.on('delUser', id => {
+    let idx = ids().findIndex(id);
     users.splice(idx, 1);
 });
 
@@ -14,11 +14,11 @@ socket.on('mouse', user => {
     if (!ids().includes(user.id))
         users.push(user);
 
-    let u = users(ids().findIndex(user.id));
+    let u = users[ids().findIndex(user.id)];
     u.x = user.x;
     u.y = user.y;
-    let ucolor = user.color;
-    u.color = color(ucolor.r, ucolor.g, ucolor.b);
+    let c = user.color;
+    u.color = color(c.r, c.g, c.b);
 });
 
 let col;
@@ -41,7 +41,7 @@ function make2DArray(cols, rows) {
 function setup() {
     createCanvas(401, 401);
 
-    col = color(random(255), random(255), random(255));
+    col = color(random(100, 255), random(100, 255), random(100, 255));
 
     cols = floor(width / w);
     rows = floor(height / w);

@@ -5,12 +5,24 @@ let tries = [];
 
 let i = 0;
 
+function addPlats() {
+    plats.push(new Platform(i, 200 + 40 * noise(i / 500), 100, 60));
+    if (random() < 0.15) {
+        plats.push(new Spike(i + 40 + random(20), 180 + 40 * noise(i / 500), 20, 20));
+    }
+    i += 100;
+}
+
 function setup() {
     createCanvas(windowWidth, windowHeight);
 
     gravity = createVector(gravity.x, gravity.y);
 
     p = new Player(0, 150, 20, 20);
+
+    for (let j = 0; j < 20; j++) {
+        addPlats();
+    }
 }
 
 function keyPressed() {
@@ -29,11 +41,7 @@ function draw() {
     });
 
     if (plats[plats.length - 1].x < p.pos.x + width) {
-        plats.push(new Platform(i, 200 + 40 * noise(i / 500), 100, 60));
-        if (random() < 0.15) {
-            plats.push(new Spike(i + 40 + random(20), 180 + 40 * noise(i / 500), 20, 20));
-        }
-        i += 100;
+        addPlats();
     }
 
     plats.forEach(plat => plat.show());

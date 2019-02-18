@@ -19,10 +19,6 @@ function setup() {
     gravity = createVector(gravity.x, gravity.y);
 
     p = new Player(0, 150, 20, 20);
-
-    for (let j = 0; j < 20; j++) {
-        addPlats();
-    }
 }
 
 function keyPressed() {
@@ -40,7 +36,7 @@ function draw() {
         }
     });
 
-    if (plats[plats.length - 1].x < p.pos.x + width) {
+    if (plats.length === 0 || plats[plats.length - 1].x < p.pos.x + width) {
         addPlats();
     }
 

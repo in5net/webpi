@@ -1,0 +1,23 @@
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+#stats {
+    background-color: black;
+    color: white;
+}
+
+#click {
+    width: 200px;
+    height: 70px;
+}
+
+.adder {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-auto-flow: column;
+    grid-gap: 10px;
+    width: 300px;
+}

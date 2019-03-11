@@ -22,7 +22,7 @@ function createAdder(type) {
             a.cost *= buyMultiplier;
             a.count++;
 
-            p.innerHTML = `Count: ${a.count} -- Cost: ${round(a.cost, 2)}`;
+            p.innerHTML = `Count: ${a.count} -- Cost: ${round(a.cost, 2)} -- MPS: ${a.mps}`;
         }
     }).bind(b);
     b.autoType = type;
@@ -30,7 +30,7 @@ function createAdder(type) {
 
     let p = document.createElement('p');
     let a = autos[type];
-    p.innerHTML = `Count: ${a.count} -- Cost: ${round(a.cost, 2)}`;
+    p.innerHTML = `Count: ${a.count} -- Cost: ${round(a.cost, 2)} -- MPS: ${a.mps}`;
     b.p = p;
     div.appendChild(p);
 

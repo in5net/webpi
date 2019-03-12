@@ -1,18 +1,30 @@
-const autos = {
-    'Tetris': makeAuto('Tetris', 1, 20),
-    'Pac-Man': makeAuto('Pac-Man', 3, 80),
-    'Minesweeper': makeAuto('Minesweeper', 5, 300),
-    'Must-a-mine': makeAuto('Must-a-mine', 10, 1000),
-    'Minecraft': makeAuto('Minecraft', 25, 2000),
-    'Roblox': makeAuto('Roblox', 65, 5000),
-    'Subnautica': makeAuto('Subnautica', 100, 7000),
-    'PUBG': makeAuto('PUBG', 200, 10000),
-    'Realm Royale': makeAuto('Realm Royale', 500, 20000),
-    'Fortnite': makeAuto('Fortnite', 1000, 50000),
-};
-
+// MONEY
 let money = 0;
-
-const fps = 60;
+let moneyMultiplier = 1;
 const buyMultiplier = 1.05;
+
+// PROGRESS
 const unlockPercent = 0.7;
+
+// GAME EXPERIENCE
+const fps = 60;
+
+const autos = {};
+const upgrades = {};
+
+// PRODUCTION (name, cost, moneyPerSecond)
+auto('Tetris', 20, 1);
+auto('Pac-Man', 80, 3);
+auto('Minesweeper', 300, 5);
+auto('Must-a-mine', 1000, 10);
+auto('Minecraft', 2000, 25);
+auto('Roblox', 5000, 65);
+auto('Subnautica', 7000, 100);
+auto('PUBG', 10000, 200);
+auto('Realm Royale', 20000, 500);
+auto('Fortnite', 50000, 1000);
+
+// UPGRADES (name, cost, whenYouBuy)
+upgrade('2x money production', 100, () => {
+    moneyMultiplier *= 2;
+});

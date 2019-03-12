@@ -7,16 +7,26 @@ setInterval(() => {
             sum += autos[prop].collect();
     }
     dmoney = sum;
-    money += dmoney / fps;
+    money += dmoney / fps * moneyMultiplier;
 }, 1000 / fps);
 
 function checkBtns() {
     for (let prop in autos) {
         if (autos.hasOwnProperty(prop)) {
             let a = autos[prop];
-            if (money >= a.cost * unlockPercent && !a.btnMade) {
-                a.makeBtn();
-                a.btnMade = true;
+            if (money >= a.cost * unlockPercent && !a.htmlMade) {
+                a.createHTML();
+                a.htmlMade = true;
+            }
+        }
+    }
+
+    for (let prop in upgrades) {
+        if (upgrades.hasOwnProperty(prop)) {
+            let u = upgrades[prop];
+            if (money >= u.cost * unlockPercent && !u.htmlMade) {
+                u.createHTML();
+                u.htmlMade = true;
             }
         }
     }
@@ -25,7 +35,7 @@ function checkBtns() {
 (function updateScreen() {
     checkBtns();
 
-    moneyH.innerHTML = '$' + round(money, 2);
+    moneyH.innerHTML = '$' + money.toFixed(2);
     dmoneyH.innerHTML = (dmoney >= 0 ? '+' : '') + dmoney;
 
     window.requestAnimationFrame(updateScreen);

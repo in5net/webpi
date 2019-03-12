@@ -9,12 +9,17 @@ body {
     color: white;
 }
 
+#game {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 #click {
     width: 200px;
     height: 70px;
 }
 
-.adder {
+.auto {
     display: grid;
     grid-template-rows: 1fr;
     grid-auto-flow: column;

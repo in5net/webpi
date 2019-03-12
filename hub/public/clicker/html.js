@@ -25,14 +25,14 @@ function createAuto(name) {
             a.cost *= buyMultiplier;
             a.count++;
 
-            p.textContent = `Count: ${a.count} -- Cost: ${a.cost.toFixed(2)} -- MPS: ${a.mps}`;
+            p.textContent = `Count: ${a.count} -- Cost: $${a.cost.condense(2)} -- $${a.mps}/s`;
         }
     }).bind(b);
     div.appendChild(b);
 
     let p = document.createElement('p');
     let a = autos[name];
-    p.textContent = `Count: ${a.count} -- Cost: ${a.cost.toFixed(2)} -- MPS: ${a.mps}`;
+    p.textContent = `Count: ${a.count} -- Cost: $${a.cost.condense(2)} -- $${a.mps}/s`;
     b.p = p;
     div.appendChild(p);
 
@@ -57,7 +57,7 @@ function createUpgrade(name) {
 
     let p = document.createElement('p');
     let u = upgrades[name];
-    p.textContent = `Cost: ${u.cost.toFixed(2)}`;
+    p.textContent = `Cost: $${u.cost.condense(2)}`;
     b.p = p;
     div.appendChild(p);
 

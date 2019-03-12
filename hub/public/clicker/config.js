@@ -1,7 +1,7 @@
 // MONEY
 let money = 0;
 let moneyMultiplier = 1;
-const buyMultiplier = 1.05;
+let buyMultiplier = 1.05;
 
 // PROGRESS
 const unlockPercent = 0.7;
@@ -33,7 +33,7 @@ auto('Fortnite', 50000, 1000);
 // UPGRADES (name, cost, whenYouBuy, [conditionToShow])
 upgrade('Play games more intense', 300, () => moneyMultiplier += 0.1);
 upgrade('Choose Pepsi over Diet Pepsi', 900, () => moneyMultiplier += 0.15);
-upgrade("Don't play Fortnite as much", 1500, () => moneyMultiplier += 0.5);
+upgrade("Plan to not play Fortnite too much", 1500, () => moneyMultiplier += 0.5);
 upgrade('Order pizza from anywhere but Papa Johns and Jets', 1000, () => moneyMultiplier += 0.2);
 upgrade('Decrease buy multiplier by 1%', 10000, () => buyMultiplier -= 0.01);
 upgrade('Play many versions of Pac-man', 100, () => moneyMultiplier += 0.03, () => autos['Pac-man'].count > 5);

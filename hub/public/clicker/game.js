@@ -1,4 +1,18 @@
 let dmoney = 0;
+const numWords = [
+    '',
+    '',
+    'million',
+    'billion',
+    'trillion',
+    'quadrillion',
+    'quintillion',
+    'sextillion',
+    'septillion',
+    'octillion',
+    'nonillion',
+    'decillion'
+];
 
 setInterval(() => {
     let sum = 0;
@@ -24,7 +38,7 @@ function checkBtns() {
     for (let prop in upgrades) {
         if (upgrades.hasOwnProperty(prop)) {
             let u = upgrades[prop];
-            if (u.conditionToShow(Upgrade.defaultCondition) && !u.htmlMade) {
+            if (u.conditionToShow(Upgrade.defaultCondition.bind(u)) && !u.htmlMade) {
                 u.createHTML();
                 u.htmlMade = true;
             }
@@ -35,8 +49,8 @@ function checkBtns() {
 (function updateScreen() {
     checkBtns();
 
-    moneyH.innerHTML = '$' + money.toFixed(2);
-    dmoneyH.innerHTML = (dmoney >= 0 ? '+' : '') + dmoney + '  x' + moneyMultiplier;
+    moneyH.innerHTML = '$' + money.condense(2);
+    dmoneyH.innerHTML = (dmoney >= 0 ? '+' : '') + dmoney.condense(2) + '  x' + moneyMultiplier.condense(2);
 
     window.requestAnimationFrame(updateScreen);
 })();

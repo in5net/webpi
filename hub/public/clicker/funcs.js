@@ -29,7 +29,7 @@ class Upgrade {
         this.name = name;
         this.cost = cost;
         this.onbuy = onbuy;
-        this.conditionToShow = conditionToShow || Upgrade.defaultCondition;
+        this.conditionToShow = conditionToShow || Upgrade.defaultCondition.bind(this);
         this.htmlMade = false;
     }
 
@@ -49,3 +49,14 @@ class Upgrade {
 function upgrade(name, cost, onbuy, conditionToShow) {
     upgrades[name] = new Upgrade(name, cost, onbuy, conditionToShow);
 }
+
+Number.prototype.condense = function(places) {
+    let index = Math.floor(Math.floor(Math.log10(this)) / 3);
+    let decimal = this / Math.pow(10, index * 3);
+    let word = numWords[index];
+
+    if (word)
+        return decimal.toFixed(places) + ' ' + word;
+    else
+        return this;
+};

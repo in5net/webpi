@@ -58,5 +58,5 @@ Number.prototype.condense = function(places) {
     if (word)
         return decimal.toFixed(places) + ' ' + word;
     else
-        return this;
+        return this.toFixed(places);
 };

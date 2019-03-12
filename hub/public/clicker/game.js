@@ -24,7 +24,7 @@ function checkBtns() {
     for (let prop in upgrades) {
         if (upgrades.hasOwnProperty(prop)) {
             let u = upgrades[prop];
-            if (money >= u.cost * unlockPercent && !u.htmlMade) {
+            if (u.conditionToShow(Upgrade.defaultCondition) && !u.htmlMade) {
                 u.createHTML();
                 u.htmlMade = true;
             }
@@ -36,7 +36,7 @@ function checkBtns() {
     checkBtns();
 
     moneyH.innerHTML = '$' + money.toFixed(2);
-    dmoneyH.innerHTML = (dmoney >= 0 ? '+' : '') + dmoney;
+    dmoneyH.innerHTML = (dmoney >= 0 ? '+' : '') + dmoney + '  x' + moneyMultiplier;
 
     window.requestAnimationFrame(updateScreen);
 })();

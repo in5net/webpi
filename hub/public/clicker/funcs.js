@@ -25,11 +25,16 @@ function auto(name, cost, mps) {
 }
 
 class Upgrade {
-    constructor(name, cost, onbuy) {
+    constructor(name, cost, onbuy, conditionToShow) {
         this.name = name;
         this.cost = cost;
         this.onbuy = onbuy;
+        this.conditionToShow = conditionToShow || Upgrade.defaultCondition;
         this.htmlMade = false;
+    }
+
+    static defaultCondition() {
+        return money >= this.cost * unlockPercent;
     }
 
     createHTML() {
@@ -41,6 +46,6 @@ class Upgrade {
     }
 }
 
-function upgrade(name, cost, onbuy) {
-    upgrades[name] = new Upgrade(name, cost, onbuy);
+function upgrade(name, cost, onbuy, conditionToShow) {
+    upgrades[name] = new Upgrade(name, cost, onbuy, conditionToShow);
 }

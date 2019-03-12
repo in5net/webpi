@@ -1,7 +1,7 @@
 // MONEY
 let money = 0;
 let moneyMultiplier = 1;
-let buyMultiplier = 1.05;
+let buyMultiplier = 1.1;
 
 // PROGRESS
 const unlockPercent = 0.7;
@@ -16,7 +16,6 @@ const upgrades = {};
 auto('Tetris', 20, 1);
 auto('Pac-man', 80, 3);
 auto('Minesweeper', 300, 5);
-auto('Fortnite', 50000, 1000);
 auto('Must-a-mine', 1000, 10);
 auto('Minecraft', 2000, 25);
 auto('Roblox', 5000, 65);
@@ -28,7 +27,6 @@ auto("Hitchhiker's Guide to the Galaxy", 100000, 3000);
 auto('Splix.io', 300000, 5000);
 auto('LittleBigSnake', 600000, 10000);
 auto('Slime Rancher', 1000000, 25000);
-auto('Fortnite', 50000, 1000);
 
 // UPGRADES (name, cost, whenYouBuy, [conditionToShow])
 upgrade('Play games more intense', 300, () => moneyMultiplier += 0.1);

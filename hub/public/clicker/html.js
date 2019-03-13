@@ -5,6 +5,10 @@ document.getElementById('click').onclick = () => money += moneyMultiplier;
 const productionDiv = document.getElementById('production');
 const upgradesDiv = document.getElementById('upgrades');
 
+document.getElementById('1x').onclick = () => buyMode = 1;
+document.getElementById('10x').onclick = () => buyMode = 10;
+document.getElementById('100x').onclick = () => buyMode = 100;
+
 function createButton(text, onclick) {
     let el = document.createElement('button');
     el.innerHTML = text;
@@ -20,10 +24,10 @@ function createAuto(name) {
     let b = createButton(name);
     b.onclick = (function() {
         let a = autos[this.textContent];
-        if (money >= a.cost) {
-            money -= a.cost;
-            a.cost *= buyMultiplier;
-            a.count++;
+        if (money >= a.cost * buyMode) {
+            money -= a.cost * buyMode;
+            a.cost *= Math.pow(buyMultiplier, buyMode);
+            a.count += buyMode;
 
             p.textContent = `Count: ${a.count} -- Cost: $${a.cost.condense(2)} -- $${a.mps}/s`;
         }

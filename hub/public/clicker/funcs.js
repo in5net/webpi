@@ -56,7 +56,7 @@ Number.prototype.condense = function(places) {
     let word = numWords[index];
 
     if (word)
-        return decimal.toFixed(places) + ' ' + word;
+        return decimal.toFixed(places) + (word === 'K' ? word : ' ' + word);
     else
         return this.toFixed(places);
 };

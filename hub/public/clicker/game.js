@@ -1,7 +1,7 @@
 let dmoney = 0;
 const numWords = [
     '',
-    '',
+    'K',
     'million',
     'billion',
     'trillion',
@@ -11,7 +11,17 @@ const numWords = [
     'septillion',
     'octillion',
     'nonillion',
-    'decillion'
+    'decillion',
+    'undecillion',
+    'duodecillion',
+    'tredecillion',
+    'quattourdecillion',
+    'quindecillion',
+    'sexdecillion',
+    'septendecillion',
+    'octodecillion',
+    'novemdecillion',
+    'vigintillion'
 ];
 
 setInterval(() => {

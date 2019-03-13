@@ -1,5 +1,5 @@
 // MONEY
-let money = Number.MAX_VALUE;
+let money = 0;
 let moneyMultiplier = 1;
 let buyMultiplier = 1.1;
 

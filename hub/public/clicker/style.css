@@ -12,7 +12,9 @@ body {
 
 #stats {
     display: grid;
+    grid-template-columns: max-content 1fr;
     grid-auto-flow: column;
+    grid-gap: 20px;
     position: fixed;
     width: 100%;
     background-color: black;

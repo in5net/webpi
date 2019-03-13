@@ -34,7 +34,7 @@ upgrade('Choose Pepsi over Diet Pepsi', 900, () => moneyMultiplier += 0.15);
 upgrade("Plan to not play Fortnite too much", 1500, () => moneyMultiplier += 0.5);
 upgrade('Order pizza from anywhere but Papa Johns and Jets', 1000, () => moneyMultiplier += 0.2);
 upgrade('Decrease buy multiplier by 1%', 10000, () => buyMultiplier -= 0.01);
-upgrade('Play many versions of Pac-man', 100, () => moneyMultiplier += 0.03, () => autos['Pac-man'].count > 5);
+upgrade('Play many versions of Pac-man', 100, () => moneyMultiplier += 0.03, () => autos['Pac-man'].count >= 10);
 upgrade('Drink more water', 2100, () => moneyMultiplier += 0.2);
 upgrade('Get PUBG Mobile PC emulator', 15000, () => moneyMultiplier += 0.3, d => autos['PUBG'].count >= 10 && d());
 upgrade('Google something', 100000, () => moneyMultiplier += 0.1);

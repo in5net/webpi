@@ -6,7 +6,7 @@ let isDrawing = false;
 let name;
 
 function setup() {
-    createCanvas(200, 200)
+    createCanvas(600, 400)
         .mousePressed(startPath)
         .mouseReleased(endPath)
         .parent('#canvas-container');

@@ -54,8 +54,7 @@ let undoBtn = new Button("Undo", resolution + drawEraseBtn.x + drawEraseBtn.w, r
 let pauseBtn = new Button("Pause", resolution, resolution, resolution * 12, resolution * 4);
 
 function setup() {
-    let len = windowHeight;
-    createCanvas(len, len);
+    createCanvas(windowWidth, windowHeight);
     cols = ceil(width / resolution);
     rows = ceil(height / resolution);
     grid = make2DArray(cols, rows);

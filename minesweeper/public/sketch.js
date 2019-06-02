@@ -1,4 +1,4 @@
-const ip = '71.66.250.75';
+const ip = 'nolimits.ga';
 const port = 3499;
 const socket = io.connect(ip + ':' + port);
 

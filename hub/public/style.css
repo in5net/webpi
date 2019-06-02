@@ -55,7 +55,3 @@ a {
 .container div * {
     text-align: center;
 }
-
-.author {
-    width: max-content;
-}

@@ -1,1 +1,1 @@
-**This is a bunch of code for chefcgames.ga to run on a server**
+**This is a bunch of code for nolimits.ga to run on a server**
